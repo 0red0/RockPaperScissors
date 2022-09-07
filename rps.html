@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <div class="inputs">
+      <h2>Choose Rock, Paper or Scissors :</h2>
+      <button value="rock">Rock</button>
+      <button value="paper">Paper</button>
+      <button value="scissors">Scissors</button>
+   </div>
+   <div class="results">
+      <h3>Your Choice is : <span id="choose"></span></h3>
+      <h3>PC Choice is : <span id="pcPicked"></span></h3>
+      <h3 id="result" style="width: fit-content;padding: 5px;"></h3>
+   </div>
+
+   <script>
+      const player = document.getElementById("choose");
+      const btn = document.querySelectorAll("button");
+      const pc = document.getElementById("pcPicked");
+      const forPc = ["rock", "paper", "scissors"];
+      const result = document.getElementById("result");
+
+      btn.forEach(button => {
+         button.addEventListener("click", () => {
+            const randomizer = (Math.round(Math.random() * 2));
+            pc.textContent = forPc[randomizer].toUpperCase();
+            player.textContent = button.value.toUpperCase();
+
+            if (player.textContent === pc.textContent) {
+               result.textContent = "It's A Draw.!";
+               result.style.background = 'yellow';
+               result.style.color = "black";
+
+            }
+            if (player.textContent == "ROCK" && pc.textContent == "PAPER") {
+               result.textContent = "You Lose! :(";
+               result.style.background = 'red';
+               result.style.color = "white";
+
+            }
+            if (player.textContent == "ROCK" && pc.textContent == "SCISSORS") {
+               result.textContent = "You Win. :>";
+               result.style.color = "white";
+               result.style.background = 'green';
+            }
+            if (player.textContent == "PAPER" && pc.textContent == "ROCK") {
+               result.textContent = "You Win. :>";
+               result.style.color = "white";
+               result.style.background = 'green';
+            }
+            if (player.textContent == "PAPER" && pc.textContent == "SCISSORS") {
+               result.textContent = "You Lose! x(";
+               result.style.background = 'red';
+               result.style.color = "white";
+
+            }
+            if (player.textContent == "SCISSORS" && pc.textContent == "ROCK") {
+               result.textContent = "You Lose! :(";
+               result.style.background = 'red';
+               result.style.color = "white";
+
+            }
+            if (player.textContent == "SCISSORS" && pc.textContent == "PAPER") {
+               result.textContent = "You Win. ;)";
+               result.style.color = "white";
+               result.style.background = 'green';
+            }
+         })
+      })
+
+
+   </script>
+</body>
+
+</html>
