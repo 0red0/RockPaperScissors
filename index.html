@@ -5,99 +5,44 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+   <title>R.P.S</title>
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="normalize.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+   <script src="rps.js" defer></script>
+
 </head>
 
 <body>
-   <div class="inputs">
-      <h2>Choose Rock, Paper or Scissors :</h2>
-      <button value="rock">Rock</button>
-      <button value="paper">Paper</button>
-      <button value="scissors">Scissors</button>
+   <div class="container">
+      <div class="inputs">
+         <h2>Choose Rock, Paper or Scissors :</h2>
+         <button value="rock">
+            <img src="./images/rock.jpg" alt="rock">
+            Rock
+         </button>
+         <button value="paper">
+            <img src="./images/paper.jpg" alt="rock">
+            Paper
+         </button>
+         <button value="scissors">
+            <img src="./images/scissors.jpg" alt="rock">
+            Scissors
+         </button>
+      </div>
+      <div class="results">
+         <div class="choices">
+            <h3 id="player-display">Your Choice is <p class="player-imag"></p> <span id="choose"></span></h3>
+            <h3 id="pc-display">PC Choice is <p class="pc-imag"></p> <span id="pcPicked"></span></h3>
+         </div>
+         <h3 id="result"></h3>
+         <span>Your Score : <span class="score"></span> . . . </span>
+         <span>PC Score : <span class="pc-score"></span></span>
+      </div>
    </div>
-   <div class="results">
-      <h3>Your Choice is : <span id="choose"></span></h3>
-      <h3>PC Choice is : <span id="pcPicked"></span></h3>
-      <span>Your Score : <span class="score"></span> . . . </span>
-      <span>PC Score : <span class="pc-score"></span></span>
-      <h3 id="result" style="width: fit-content;padding: 5px;"></h3>
-   </div>
 
-   <script>
-      const player = document.getElementById("choose");
-      const btn = document.querySelectorAll("button");
-      const pc = document.getElementById("pcPicked");
-      const forPc = ["rock", "paper", "scissors"];
-      const result = document.getElementById("result");
-      const playerScore = document.querySelector(".score")
-      const pcScore = document.querySelector(".pc-score")
-      let playerCounter = 1;
-      let pcCounter = 1;
-
-      btn.forEach(button => {
-         button.addEventListener("click", () => {
-            const randomizer = (Math.round(Math.random() * 2));
-            pc.textContent = forPc[randomizer].toUpperCase();
-            player.textContent = button.value.toUpperCase();
-            logic()
-            keepingScore()
-
-
-         })
-      })
-      function logic() {
-         if (player.textContent === pc.textContent) {
-            result.textContent = "It's A Draw.!";
-            result.style.background = 'yellow';
-            result.style.color = "black";
-
-         }
-         if (player.textContent == "ROCK" && pc.textContent == "PAPER") {
-            result.textContent = "You Lose! :(";
-            result.style.background = 'red';
-            result.style.color = "white";
-
-         }
-         if (player.textContent == "ROCK" && pc.textContent == "SCISSORS") {
-            result.textContent = "You Win. ;)";
-            result.style.color = "white";
-            result.style.background = 'green';
-         }
-         if (player.textContent == "PAPER" && pc.textContent == "ROCK") {
-            result.textContent = "You Win. ;)";
-            result.style.color = "white";
-            result.style.background = 'green';
-         }
-         if (player.textContent == "PAPER" && pc.textContent == "SCISSORS") {
-            result.textContent = "You Lose! :(";
-            result.style.background = 'red';
-            result.style.color = "white";
-
-         }
-         if (player.textContent == "SCISSORS" && pc.textContent == "ROCK") {
-            result.textContent = "You Lose! :(";
-            result.style.background = 'red';
-            result.style.color = "white";
-
-         }
-         if (player.textContent == "SCISSORS" && pc.textContent == "PAPER") {
-            result.textContent = "You Win. ;)";
-            result.style.color = "white";
-            result.style.background = 'green';
-         }
-      }
-      function keepingScore() {
-         if (result.textContent == ("You Win. ;)")) {
-            playerScore.innerText = playerCounter;
-            playerCounter++;
-         }
-         if (result.textContent == ("You Lose! :(")) {
-            pcScore.innerText = pcCounter;
-            pcCounter++;
-         }
-      }
-
-   </script>
 </body>
 
 </html>
